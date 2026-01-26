@@ -108,6 +108,9 @@ class App:
             hdtv.rootext.dlmgr.RebuildLibraries(
                 hdtv.rootext.dlmgr.usrdir, libraries=args.rebuildusr or None
             )
+            print("Usr build process is complete! Existing ...")
+            sys.exit(0)
+
         if args.rebuildsys is not None:
             import hdtv.rootext.dlmgr
 
