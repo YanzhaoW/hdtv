@@ -2,6 +2,7 @@ name: hdtv
 channels:
   - conda-forge
 dependencies:
+  - python=3.13
   - hsluv
   - ipython
   - matplotlib
