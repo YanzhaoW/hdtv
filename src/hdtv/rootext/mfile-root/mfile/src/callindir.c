@@ -36,9 +36,11 @@
   (mat && buffer && (uint32_t)level < mat->levels && (uint32_t)line < mat->lines && (uint32_t)col < mat->columns &&    \
    (uint32_t)num <= mat->columns && (uint32_t)(col + num) <= mat->columns)
 
+// typedef int32_t func_pointer(MFILE *, int32_t *, int32_t, int32_t, int32_t, int32_t);
+
 int32_t mgetint(MFILE *mat, int32_t *buffer, int32_t level, int32_t line, int32_t col, int32_t num) {
 
-  int32_t (*f)();
+  func_ptr_int_buffer f;
 
   /* sanity checks */
   if (paramok(mat, buffer, level, line, col, num)) {
@@ -56,7 +58,7 @@ int32_t mgetint(MFILE *mat, int32_t *buffer, int32_t level, int32_t line, int32_
 
 int32_t mputint(MFILE *mat, int32_t *buffer, int32_t level, int32_t line, int32_t col, int32_t num) {
 
-  int32_t (*f)();
+  func_ptr_int_buffer f;
 
   /* sanity checks */
   if (paramok(mat, buffer, level, line, col, num)) {
@@ -80,7 +82,7 @@ int32_t mputint(MFILE *mat, int32_t *buffer, int32_t level, int32_t line, int32_
 
 int32_t mgetflt(MFILE *mat, float *buffer, int32_t level, int32_t line, int32_t col, int32_t num) {
 
-  int32_t (*f)();
+  func_ptr_float_buffer f;
 
   /* sanity checks */
   if (paramok(mat, buffer, level, line, col, num)) {
@@ -98,7 +100,7 @@ int32_t mgetflt(MFILE *mat, float *buffer, int32_t level, int32_t line, int32_t 
 
 int32_t mputflt(MFILE *mat, float *buffer, int32_t level, int32_t line, int32_t col, int32_t num) {
 
-  int32_t (*f)();
+  func_ptr_float_buffer f;
 
   /* sanity checks */
   if (paramok(mat, buffer, level, line, col, num)) {
@@ -122,7 +124,7 @@ int32_t mputflt(MFILE *mat, float *buffer, int32_t level, int32_t line, int32_t 
 
 int32_t mgetdbl(MFILE *mat, double *buffer, int32_t level, int32_t line, int32_t col, int32_t num) {
 
-  int32_t (*f)();
+  func_ptr_double_buffer f;
 
   /* sanity checks */
   if (paramok(mat, buffer, level, line, col, num)) {
@@ -140,7 +142,7 @@ int32_t mgetdbl(MFILE *mat, double *buffer, int32_t level, int32_t line, int32_t
 
 int32_t mputdbl(MFILE *mat, double *buffer, int32_t level, int32_t line, int32_t col, int32_t num) {
 
-  int32_t (*f)();
+  func_ptr_double_buffer f;
 
   /* sanity checks */
   if (paramok(mat, buffer, level, line, col, num)) {

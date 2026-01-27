@@ -121,8 +121,14 @@ typedef struct minfo {
 
 typedef struct accessmethod *amp;
 
+struct matfile;
+
+typedef int32_t (*muninitf_ptr)(struct matfile *);
+typedef int32_t (*func_ptr_int_buffer)(struct matfile *, int32_t *, int32_t, int32_t, int32_t, int32_t);
+typedef int32_t (*func_ptr_float_buffer)(struct matfile *, float *, int32_t, int32_t, int32_t, int32_t);
+typedef int32_t (*func_ptr_double_buffer)(struct matfile *, double *, int32_t, int32_t, int32_t, int32_t);
+
 typedef struct matfile {
-  amp ap;
   char *name;
   char *comment;
   int32_t mode;
@@ -132,14 +138,23 @@ typedef struct matfile {
   uint32_t levels;
   uint32_t lines;
   uint32_t columns;
-  int32_t (*mflushf)();
-  int32_t (*muninitf)();
-  int32_t (*mgeti4f)();
-  int32_t (*mgetf4f)();
-  int32_t (*mgetf8f)();
-  int32_t (*mputi4f)();
-  int32_t (*mputf4f)();
-  int32_t (*mputf8f)();
+  amp ap;
+  muninitf_ptr mflushf;
+  muninitf_ptr muninitf;
+  func_ptr_int_buffer mgeti4f;
+  func_ptr_float_buffer mgetf4f;
+  func_ptr_double_buffer mgetf8f;
+  func_ptr_int_buffer mputi4f;
+  func_ptr_float_buffer mputf4f;
+  func_ptr_double_buffer mputf8f;
+  // int32_t (*mflushf)();
+  // int32_t (*muninitf)();
+  // int32_t (*mgeti4f)();
+  // int32_t (*mgetf4f)();
+  // int32_t (*mgetf8f)();
+  // int32_t (*mputi4f)();
+  // int32_t (*mputf4f)();
+  // int32_t (*mputf8f)();
   union {
     void *p;
     int32_t i;

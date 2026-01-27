@@ -104,7 +104,7 @@ set_target_properties(
 
 # For mfile
 target_compile_features(${PROJECT_NAME} PRIVATE c_std_99)
-target_compile_options(${PROJECT_NAME} PRIVATE -ftrapv -Wall)
+target_compile_options(${PROJECT_NAME} PRIVATE -ftrapv -Wall -Wno-incompatible-pointer-types -Wno-old-style-definition)
 # Check endian-ness
 include(TestBigEndian)
 test_big_endian(BIGENDIAN)

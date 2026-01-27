@@ -91,8 +91,8 @@ void gf2_init(MFILE *mat) {
     mat->specinfo.i = elemsize;
     mat->version = GF2_STD_VERSION;
 
-    mat->mgetf4f = getfLocal;
-    mat->mputf4f = putfLocal;
+    mat->mgetf4f = (func_ptr_float_buffer)getfLocal;
+    mat->mputf4f = (func_ptr_float_buffer)putfLocal;
     mat->muninitf = gf2_uninit;
   }
 }
