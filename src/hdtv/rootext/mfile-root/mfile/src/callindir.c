@@ -94,12 +94,6 @@ int32_t mgetflt(MFILE *mat, float *buffer, int32_t level, int32_t line, int32_t 
 }
 
 int32_t mputflt(MFILE *mat, float *buffer, int32_t level, int32_t line, int32_t col, int32_t num) {
-<<<<<<< HEAD
-=======
-
-  func_ptr_float_buffer f;
-
->>>>>>> 4ac7b7b (fix compile issues from mfile-root)
   /* sanity checks */
   if (!paramok(mat, buffer, level, line, col, num))
     return -1;
