@@ -9,10 +9,4 @@ target_sources(
 )
 target_link_libraries(matop PRIVATE mfile)
 
-install(
-    TARGETS matop
-    FILE_SET HEADERS
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
-    PUBLIC_HEADER DESTINATION include
-)
+install(TARGETS matop FILE_SET HEADERS)
