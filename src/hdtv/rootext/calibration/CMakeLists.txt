@@ -4,7 +4,7 @@ project(calibration LANGUAGES CXX)
 
 set(HEADERS Calibration.hpp)
 
-find_package(ROOT REQUIRED COMPONENTS Core Hist)
+find_package(ROOT REQUIRED CONFIG COMPONENTS Core Hist)
 message(STATUS "ROOT Version ${ROOT_VERSION} found in ${ROOT_root_CMD}")
 if(${ROOT_VERSION_MINOR} GREATER_EQUAL 20)
   include(${ROOT_DIR}/RootMacros.cmake)
