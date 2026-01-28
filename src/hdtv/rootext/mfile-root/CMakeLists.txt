@@ -2,12 +2,9 @@ cmake_minimum_required(VERSION 3.24)
 
 project(mfile-root LANGUAGES CXX C)
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../cmake)
 
-include(GNUInstallDirs)
-set(CMAKE_INSTALL_LIBDIR lib)
+include(install_setup)
 
 find_package(ROOT REQUIRED CONFIG COMPONENTS Core Hist)
 
@@ -18,13 +15,13 @@ add_subdirectory(matop)
 
 add_library(${PROJECT_NAME} SHARED)
 
+set(HEADERS MFileHist.hh MFileRoot.hh MatOp.hh VMatrix.hh)
+
 target_sources(
     ${PROJECT_NAME}
     PRIVATE MFileHist.cc MFileRoot.cc MatOp.cc VMatrix.cc
     PUBLIC
-        FILE_SET HEADERS
-            BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}
-            FILES MFileHist.hh MFileRoot.hh MatOp.hh VMatrix.hh
+        FILE_SET HEADERS BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR} FILES ${HEADERS}
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE ROOT::Core ROOT::Hist matop mfile)
