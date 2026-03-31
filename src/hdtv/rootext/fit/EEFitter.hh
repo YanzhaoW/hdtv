@@ -48,9 +48,12 @@ public:
   EEPeak();
   EEPeak(const Param &pos, const Param &amp, const Param &sigma1, const Param &sigma2, const Param &eta,
          const Param &gamma);
-  EEPeak(const EEPeak &src);
-  EEPeak &operator=(const EEPeak &src);
+
   ~EEPeak();
+  EEPeak(const EEPeak &src);
+  EEPeak(EEPeak &&) = default;
+  EEPeak &operator=(const EEPeak &src);
+  EEPeak &operator=(EEPeak &&) = default;
 
   double Eval(const double *x, const double *p) const;
 
@@ -114,10 +117,12 @@ class EEFitter : public Fitter {
 public:
   EEFitter(double r1, double r2, Option<bool> integrate, Option<std::string> likelihood, bool debugShowInipar = false);
   ~EEFitter();
-      
+
   // Copying the fitter is not supported
   EEFitter(const EEFitter &) = delete;
   EEFitter &operator=(const EEFitter &) = delete;
+  EEFitter(EEFitter &&) = default;
+  EEFitter &operator=(EEFitter &&) = default;
 
   void AddPeak(const EEPeak &peak);
   void Fit(TH1 &hist, const Background &bg);

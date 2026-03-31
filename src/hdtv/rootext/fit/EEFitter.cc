@@ -43,6 +43,7 @@ const double EEPeak::DECOMP_FUNC_WIDTH = 4.0;
 EEPeak::EEPeak() = default;
 EEPeak::~EEPeak() = default;
 
+
 EEPeak::EEPeak(const Param &pos, const Param &amp, const Param &sigma1, const Param &sigma2, const Param &eta,
                const Param &gamma)
     : fPos{pos}, fAmp{amp}, fSigma1{sigma1}, fSigma2{sigma2}, fEta{eta}, fGamma{gamma},
