@@ -14,14 +14,13 @@ add_library(hdtv::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
 target_sources(
     ${PROJECT_NAME}
-    PRIVATE Calibration.cc
     PUBLIC
         FILE_SET HEADERS
             BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}
-            FILES Calibration.hh
+            FILES Calibration.hpp
 )
 
-root_generate_dictionary(G__${PROJECT_NAME} Calibration.hh MODULE ${PROJECT_NAME} LINKDEF LinkDef.h)
+root_generate_dictionary(G__${PROJECT_NAME} Calibration.hpp MODULE ${PROJECT_NAME} LINKDEF LinkDef.h)
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_14)
 target_link_libraries(

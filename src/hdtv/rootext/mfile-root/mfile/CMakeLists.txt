@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.24)
 project(mfile VERSION 1.2 LANGUAGES C)
 
+include(TestBigEndian)
+include(CheckFunctionExists)
+include(CheckIncludeFile)
+
 add_library(mfile SHARED ${SOURCES})
 add_library(hdtv::mfile ALIAS ${PROJECT_NAME})
 
@@ -83,7 +87,6 @@ target_compile_options(
 )
 
 # Check endian-ness
-include(TestBigEndian)
 test_big_endian(BIGENDIAN)
 if(NOT ${BIGENDIAN})
     target_compile_definitions(${PROJECT_NAME} PRIVATE -DLOWENDIAN)
