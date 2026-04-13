@@ -13,7 +13,7 @@ message(STATUS "ROOT Version ${ROOT_VERSION} found in ${ROOT_root_CMD}")
 add_subdirectory(mfile)
 add_subdirectory(matop)
 
-add_library(${PROJECT_NAME})
+add_library(${PROJECT_NAME} SHARED)
 
 set(HEADERS MFileHist.hh MFileRoot.hh MatOp.hh VMatrix.hh)
 

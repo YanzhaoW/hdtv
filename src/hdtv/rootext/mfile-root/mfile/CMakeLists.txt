@@ -5,7 +5,7 @@ include(TestBigEndian)
 include(CheckFunctionExists)
 include(CheckIncludeFile)
 
-add_library(mfile SHARED)
+add_library(mfile)
 add_library(hdtv::mfile ALIAS ${PROJECT_NAME})
 
 target_sources(
@@ -85,6 +85,10 @@ target_compile_options(
         -Wno-incompatible-pointer-types
         -Wno-old-style-definition
 )
+
+if(NOT BUILD_SHARED_LIBS)
+    target_compile_options(${PROJECT_NAME} PRIVATE -fPIC)
+endif()
 
 # Check endian-ness
 test_big_endian(BIGENDIAN)
