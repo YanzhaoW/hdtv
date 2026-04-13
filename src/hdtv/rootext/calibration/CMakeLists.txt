@@ -5,7 +5,7 @@ project(calibration LANGUAGES CXX)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../cmake)
 include(install_setup)
 
-find_package(ROOT REQUIRED CONFIG COMPONENTS Core Hist Graf Gui)
+find_package(ROOT REQUIRED CONFIG COMPONENTS Core Hist)
 
 message(STATUS "ROOT Version ${ROOT_VERSION} found in ${ROOT_root_CMD}")
 
@@ -20,7 +20,14 @@ target_sources(
             FILES Calibration.hpp
 )
 
-root_generate_dictionary(G__${PROJECT_NAME} Calibration.hpp MODULE ${PROJECT_NAME} LINKDEF LinkDef.h)
+root_generate_dictionary(
+  G__${PROJECT_NAME}
+  Calibration.hpp
+  MODULE
+  ${PROJECT_NAME}
+  LINKDEF
+  LinkDef.h
+)
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_14)
 target_link_libraries(

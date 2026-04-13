@@ -13,7 +13,7 @@ message(STATUS "ROOT Version ${ROOT_VERSION} found in ${ROOT_root_CMD}")
 add_subdirectory(mfile)
 add_subdirectory(matop)
 
-add_library(${PROJECT_NAME} SHARED)
+add_library(${PROJECT_NAME})
 
 set(HEADERS MFileHist.hh MFileRoot.hh MatOp.hh VMatrix.hh)
 
@@ -26,7 +26,14 @@ target_sources(
 
 target_link_libraries(${PROJECT_NAME} PRIVATE ROOT::Core ROOT::Hist matop mfile)
 
-root_generate_dictionary(G__${PROJECT_NAME} ${HEADERS} MODULE ${PROJECT_NAME} LINKDEF LinkDef.h)
+root_generate_dictionary(
+  G__${PROJECT_NAME}
+  ${HEADERS}
+  MODULE
+  ${PROJECT_NAME}
+  LINKDEF
+  LinkDef.h
+)
 
 add_library(hdtv::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 

@@ -5,7 +5,7 @@ include(TestBigEndian)
 include(CheckFunctionExists)
 include(CheckIncludeFile)
 
-add_library(mfile SHARED ${SOURCES})
+add_library(mfile SHARED)
 add_library(hdtv::mfile ALIAS ${PROJECT_NAME})
 
 target_sources(
@@ -75,7 +75,7 @@ target_sources(
             FILES include/mfile.h
 )
 
-target_compile_features(${PROJECT_NAME} PRIVATE c_std_99)
+target_compile_features(${PROJECT_NAME} PRIVATE c_std_11)
 
 target_compile_options(
     ${PROJECT_NAME}

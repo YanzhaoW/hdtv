@@ -36,8 +36,6 @@
   (mat && buffer && (uint32_t)level < mat->levels && (uint32_t)line < mat->lines && (uint32_t)col < mat->columns &&    \
    (uint32_t)num <= mat->columns && (uint32_t)(col + num) <= mat->columns)
 
-// typedef int32_t func_pointer(MFILE *, int32_t *, int32_t, int32_t, int32_t, int32_t);
-
 int32_t mgetint(MFILE *mat, int32_t *buffer, int32_t level, int32_t line, int32_t col, int32_t num) {
   /* sanity checks */
   if (!paramok(mat, buffer, level, line, col, num))
